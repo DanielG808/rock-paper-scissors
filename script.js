@@ -2,7 +2,10 @@
     // N/A
 
 // DATA
-choices = ["R", "P", "S"]
+var choices = ["R", "P", "S"]
+var wins = 0;
+var ties = 0;
+var losses = 0;
 
 // FUNCTIONS
 function startIntro() {
@@ -14,25 +17,26 @@ function startGame() {
     
     var userChoice = getUserChoice();
     var compChoice = getCompChoice();
-    var wins = 0;
-    var ties = 0;
-    var losses = 0;
+    
+   
 
     function getUserChoice() {
         var choice = prompt("Enter R, P, or S: ");
         choice = choice.toUpperCase()
-        // if (choice !== "R") {
-        //     alert("Please enter one of the given choices! (R, P, or S)")
-        // }
-        console.log(choice);
         return choice;
     }
+
+    // function checkUserChoice() {
+    //     if (userChoice !== "R" || userChoice !== "P" || userChoice !== "S") {
+    //         alert("Please enter one of the given choices! (R, P, or S)")
+    //         getUserChoice()
+    //     }
+    // }       
 
     function getCompChoice() {
         var randomIndex = Math.floor(Math.random() * choices.length);
         var choice = choices[randomIndex];
         alert("The computer chose " + choice + "!");
-        console.log(choice);
         return choice;
     }
 
@@ -47,13 +51,19 @@ function startGame() {
             losses++;
             alert("You lost!");
         }
-        alert("Wins: " + wins + "\nTies: " + ties + "\nLosses: " + losses)
+        alert("Wins: " + wins + "\nTies: " + ties + "\nLosses: " + losses);
     }
-    getWinner()   
+    getWinner();
+    
+    var playAgain = confirm("Do you want to play again?")
+        
+        if (playAgain) {
+            startGame();
+        }
 }
 // EVENT LISTENERS
     // N/A
 
 //INITILIZATION
-startIntro()
-startGame()
+startIntro();
+startGame();
